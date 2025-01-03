@@ -53,6 +53,8 @@ class BaseAgent:
 
         self.current_epoch = 0
         self.current_iteration = 0
+        # Ensure the directory exists
+        # os.makedirs(self.params.summary_dir, exist_ok=True)
         self.summary_writer = SummaryWriter(log_dir=self.params.summary_dir, comment='biscale')
 
         self.AtlasDataset = FragDataset(params=self.params)

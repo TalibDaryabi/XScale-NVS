@@ -1,5 +1,6 @@
 import Metashape
-root = '/path/to/your/project/'
+# TODO
+root = '/tmp/uc46epev/Projects/XScale-NVS/stump/'
 doc = Metashape.app.document
 doc.open(root + 'project.psz')
 for chunk in doc.chunks:
@@ -68,7 +69,7 @@ for chunk in doc.chunks:
         #     transfer_texture=True
         # )
         frame.exportModel(
-            path=root + '1.obj',
+            path=root + 'gingy.obj',
             texture_format=Metashape.ImageFormatPNG,
             save_texture=True,
             save_uv=True,

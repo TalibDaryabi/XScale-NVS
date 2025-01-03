@@ -1,6 +1,5 @@
 name: xscalenvs
 channels:
-  - pytorch
   - conda-forge
   - defaults
 dependencies:
@@ -8,13 +7,9 @@ dependencies:
   - jinja2
   - matplotlib
   - numpy
-  - python
-  - pytorch
-  - torchvision
+  - python 
   - tqdm
   - pip:
-    - imageio
-    - nvdiffrast
     - open3d
     - opencv-python
     - pillow

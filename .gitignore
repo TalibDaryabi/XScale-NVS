@@ -1,0 +1,80 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# PyCharm specific files
+.idea/
+*.iml
+
+# Virtual environment
+venv/
+env/
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Logs and debug files
+*.log
+*.out
+*.err
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Temporary files
+*.swp
+*.swo
+*.swn
+*.tmp
+
+# Cache
+*.cache
+*.pytest_cache/
+
+# Test coverage reports
+htmlcov/
+*.coverage
+.coverage.*
+
+# Package files
+*.egg
+*.egg-info/
+dist/
+build/
+*.wheel
+
+# PyCharm workspace settings
+workspace.xml
+tasks.xml
+
+# Secrets and configuration files
+.env
+*.key
+*.pem
+*.p12
+
+# Python package management
+*.lock
+Pipfile.lock
+poetry.lock
+
+# Data files
+*.csv
+*.sqlite3
+*.db
+
+# Other IDE settings
+.vscode/
+*.sublime-project
+*.sublime-workspace
+
+# TensorBoard logs
+logs/
+
+# Metashape temporary files (if used)
+*.psz.lock

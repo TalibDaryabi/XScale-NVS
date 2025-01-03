@@ -75,10 +75,12 @@ def extrinsics_from_xml(xml_file, verbose=False, group=None):
     return extrinsics, ext_sids
 
 if __name__ == "__main__":
+    # TODO
     dsp_factor = 1
     dsp_ratio = 1. / dsp_factor
     key = ''
 
+    # TODO
     subject_file = "/Path/to/Your/Project"
     in_img_file = os.path.join(subject_file, "images")
     xml_file = os.path.join(subject_file, "cams.xml")

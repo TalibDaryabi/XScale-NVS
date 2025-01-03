@@ -1,0 +1,42 @@
+SCENE_NAME
+├── images_{dsp_factor}
+│   ├── IMGNAME1.JPG
+│   ├── IMGNAME2.JPG
+│   └── ...
+├── cams_{dsp_factor}
+│   ├── IMGNAME1_cam.txt
+│   ├── IMGNAME2_cam.txt
+│   └── ...
+└── YourMeshName.MeshEXT
+
+#Note that the mesh can be any formats supported by trimesh, i.e., MeshEXT can be the commonly used .ply, .obj, etc.
+
+stump
+├── images_{4}
+│   ├── IMGNAME1.JPG
+│   ├── IMGNAME2.JPG
+│   └── ...
+├── cams_{4}
+│   ├── IMGNAME1_cam.txt
+│   ├── IMGNAME2_cam.txt
+│   └── ...
+└── tex.obj
+
+Step 1:
+run_metashape.py creates the object. ex: tex.obj and cams.xml file.
+Parameters:
+line 3            root = '{other}/XScale-NVS/my_project/'    | images/( all the images prepared/taken by user} and project.psz.
+line 5            doc.open(root + 'project.psz')        | project.psz should be inside this folder.
+line 30           path=root + 'cams.xml', b             | cams.xml will be saved/created inside this folder.
+line 72           path=root + '1.obj',                  | object will be saved/created  in this folder.
+
+Question, how to create the project.psz file.
+Answer: open the Agile metashape software -> workflow -> upload folder( your image folder) -> save as (project.psz) -> paste that in this folder
+
+Question: is this correct?
+
+Step 2:
+xml2txt.py  : creates images_{dsp_factor} and cams_{dsp_factor}
+Parameters:
+dsp_factor: the down-sample rate, e.g., dsp_factor=4
+subject_file: the root path contains the exported image folder images and cams.xml.

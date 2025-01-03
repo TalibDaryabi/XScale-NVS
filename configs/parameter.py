@@ -9,7 +9,8 @@ import math
 class Params(object):
 
     def __init__(self):
-        self.exp_id = '0328/SCENE_NAME'
+        # TODO
+        self.exp_id = '0328/stump'
 
         self.root_params()
         self.network_params()
@@ -19,19 +20,30 @@ class Params(object):
         self.render_params()
 
     def root_params(self):
-        self.root_file = '/Your/path/to/record'
+        # TODO
+        self.root_file = '/tmp/uc46epev/Projects/XScale-NVS/mesh_root_file'
         self._debug_data_rootFld = os.path.join(self.root_file, 'debug', self.exp_id)
         self.summary_dir = os.path.join(self.root_file, 'experiment/train/log/', self.exp_id)
-        print('self.summary_dir', self.summary_dir)
         self.checkpoint_dir = os.path.join(self.root_file, 'experiment/train/state', self.exp_id)
 
         self.load_checkpoint_dir = None
         # self.load_checkpoint_dir = "/Absolute/path/to/your/ckpt/epoch:01000.pth.tar"
         self.mode = 'train'
 
+        # TODO
+        # Create directories if they don't exist
+        # os.makedirs(self._debug_data_rootFld, exist_ok=True)
+        # os.makedirs(self.summary_dir, exist_ok=True)
+        # os.makedirs(self.checkpoint_dir, exist_ok=True)
+        #
+        # # Debug print statements
+        # print('Debug data root folder:', self._debug_data_rootFld)
+        # print('Summary directory:', self.summary_dir)
+        # print('Checkpoint directory:', self.checkpoint_dir)
+
     def network_params(self):
-        self.ss_ratio = 1   # 1, 2, 4
-        self.progressive_epoch = 0     # 50
+        self.ss_ratio = 1  # 1, 2, 4
+        self.progressive_epoch = 0  # 50
         self.use_lit_emb = True
         self.use_exp_emb = True
         # -----------------------------------------------------------------------------------------------------------
@@ -39,8 +51,8 @@ class Params(object):
         self.hash_base_resol = 16
         self.hash_n_levels = 16
         self.hash_per_level_scale = 1.4768261459394993  # 21 -> 2.0885475648548275, 20 -> 2.0, 19 -> 1.9152065613971474, 18 -> 1.8340080864093424, 17 -> 1.7562521603732995, 16 -> 1.681792830507429, 15 -> 1.6104903319492543, 14 -> 1.5422108254079407, 13 -> 1.4768261459394993, 12 -> 1.4142135623730951, 2048 -> 1.3542555469368927, 1024 -> 1.2968395546510096, 512 -> 1.241857812073484
-        self.z_length_s = 8     # 8
-        self.log2_hashmap_size = 22     # 19
+        self.z_length_s = 8  # 8
+        self.log2_hashmap_size = 22  # 19
         self.descriptor_dim = 64
         if self.use_lit_emb:
             self.z_length_l = 8
@@ -72,19 +84,19 @@ class Params(object):
         self.loss_nrm_weight = 0.0
         # -----------------------------------------------------------------------------------------------------------
         self.validate_iter = 100000000
-        self.use_sparse_embedding = False   # False when single-gpu training
+        self.use_sparse_embedding = False  # False when single-gpu training
 
     def cluster_params(self):
         self.batch_shuffle_iter = 1
         self.change_nrm_coef_iter = 100000000
         # -----------------------------------------------------------------------------------------------------------
         # training batch size, num of points sampled for each atlas, adjusted according to the memory.
-        self.training_batch_size = 16384 * 3    # 16384 * 4
-        self.infer_batch_size = 540 * 1920       # 989 * 1320
-        self.random_view_batch_size = 32      # 32
-        self.ultra_cache_batch_size = 4     # 1, 4, 32
-        self.change_batches_iter = 16      # 16
-        self.shuffle_batches_iter = 8      # 8, less than int(num_rays / self.params.training_batch_size)
+        self.training_batch_size = 16384 * 3  # 16384 * 4
+        self.infer_batch_size = 540 * 1920  # 989 * 1320
+        self.random_view_batch_size = 32  # 32
+        self.ultra_cache_batch_size = 4  # 1, 4, 32
+        self.change_batches_iter = 16  # 16
+        self.shuffle_batches_iter = 8  # 8, less than int(num_rays / self.params.training_batch_size)
         # -----------------------------------------------------------------------------------------------------------
 
     def render_params(self):
@@ -99,27 +111,32 @@ class Params(object):
         self.z_far = 1000.0
 
     def load_params(self):
+        # TODO
         self.dsp_factor = 4
-        self.datasetFolder = '/Your/path/to/dataset'
-        self.modelName = "SCENE_NAME"
-        self.meshName = "YourMeshName.MeshEXT"
+        self.datasetFolder = '/tmp/uc46epev/Projects/XScale-NVS/datasetFolder/'
+        self.modelName = "stump"
+        self.meshName = "tex.obj"
         self.splitName = None
-        self.imgNamePattern = os.path.join(self.datasetFolder, self.modelName, "images_{}/*.JPG".format(self.dsp_factor))
+        self.imgNamePattern = os.path.join(self.datasetFolder, self.modelName,
+                                           "images_{}/*.JPG".format(self.dsp_factor))
         self.poseFolder = os.path.join(self.datasetFolder, self.modelName, "cams_{}".format(self.dsp_factor))
         self.atlas_load_path = os.path.join(self.datasetFolder, self.modelName, self.meshName)
-        self.attribute_cache_path = os.path.join(self.root_file, 'experiment/caches', self.modelName, 'ss_{}'.format(self.ss_ratio))
-        
+        self.attribute_cache_path = os.path.join(self.root_file, 'experiment/caches', self.modelName,
+                                                 'ss_{}'.format(self.ss_ratio))
+
         # -----------------------------------------------------------------------------------------------------------
-        # SCENE_NAME
+        # stump
+        # TODO
         self.num_lit = 1
-        self.all_view_list = list(range(675))
+        self.all_view_list = list(range(125))
         self.hold_out_list = []
         # self.test_view_list = []
         self.test_view_list = self.all_view_list[::7]
-        self.training_view_list = [i for i in self.all_view_list if i not in self.test_view_list and i not in self.hold_out_list]
-        
+        self.training_view_list = [i for i in self.all_view_list if
+                                   i not in self.test_view_list and i not in self.hold_out_list]
+
         self.rasterize_batch_size = 1
-        self.undistort_crop_rate_h = 0    # 1 / 29
+        self.undistort_crop_rate_h = 0  # 1 / 29
         self.undistort_crop_rate_w = 0
         self.undistort_crop_iter = 9999  # None
 
@@ -127,8 +144,9 @@ class Params(object):
         self.trajectory_wb_id = None
         # ---
         self.navigation_path = os.path.join(self.datasetFolder, self.modelName, 'syt.npy')
-        self.navigation_H = 1080    # 1080, 3240, 4320
-        self.navigation_W = 1920    # 1920, 5760, 7680
+        self.navigation_H = 1080  # 1080, 3240, 4320
+        self.navigation_W = 1920  # 1920, 5760, 7680
         self.navigation_focal = 2700.0  # 2000.0, 12000.0, 8000.0
         self.render_image_size = (self.navigation_H, self.navigation_W)  # the rendered output size
-        self.image_size_single = torch.FloatTensor([[[self.navigation_W, self.navigation_H]]])  # the size of the input image
+        self.image_size_single = torch.FloatTensor(
+            [[[self.navigation_W, self.navigation_H]]])  # the size of the input image
