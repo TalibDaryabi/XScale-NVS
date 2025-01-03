@@ -78,3 +78,6 @@ logs/
 
 # Metashape temporary files (if used)
 *.psz.lock
+
+datasetFolder/stump/*
+my_project/imges/*
